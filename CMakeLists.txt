@@ -4,5 +4,4 @@ project(learnopengl)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_subdirectory(Window)
-add_subdirectory(Triangle)
 add_subdirectory(Shader)

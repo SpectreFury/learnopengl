@@ -1,4 +1,9 @@
-add_executable(Shader src/main.cpp src/glad.c)
+add_executable(Shader 
+  src/main.cpp
+  src/glad.c 
+  src/Shader.hpp
+  src/Shader.cpp
+)
 
 target_include_directories(Shader PRIVATE ../Dependencies/include)
 target_link_directories(Shader PRIVATE ../Dependencies/lib)
