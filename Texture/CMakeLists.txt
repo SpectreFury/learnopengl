@@ -5,6 +5,8 @@ add_executable(Texture
   src/Shader.cpp
   src/stb_image.h
   src/stb_image.cpp
+  src/Texture.h
+  src/Texture.cpp
 )
 
 target_include_directories(Texture PRIVATE ../Dependencies/include)
