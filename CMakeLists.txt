@@ -7,4 +7,6 @@ add_subdirectory(Window)
 add_subdirectory(Triangle)
 add_subdirectory(Shader)
 add_subdirectory(Texture)
+add_subdirectory(Transformation)
+add_subdirectory(Coordinates)
 
