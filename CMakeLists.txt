@@ -9,4 +9,4 @@ add_subdirectory(Shader)
 add_subdirectory(Texture)
 add_subdirectory(Transformation)
 add_subdirectory(Coordinates)
-
+add_subdirectory(Camera)
