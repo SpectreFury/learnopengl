@@ -61,3 +61,15 @@ Shader::Shader(std::string vertexPath, std::string fragmentPath) {
 }
 
 void Shader::use() { glUseProgram(ID); }
+
+void Shader::setInt(const char* name, int value) {
+  glUniform1i(glGetUniformLocation(ID, name), value);
+}
+
+void Shader::setFloat(const char* name, float value) {
+  glUniform1f(glGetUniformLocation(ID, name), value);
+}
+
+void Shader::setMat4(const char* name, glm::mat4 value) {
+  glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, GL_FALSE, glm::value_ptr(value));
+}

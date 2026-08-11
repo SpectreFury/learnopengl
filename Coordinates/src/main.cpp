@@ -127,8 +127,20 @@ int main() {
 
   shaderProgram.use();
 
-  glUniform1i(glGetUniformLocation(shaderProgram.ID, "texture1"), 0);
-  glUniform1i(glGetUniformLocation(shaderProgram.ID, "texture2"), 1);
+  shaderProgram.setInt("texture1", 0);
+  shaderProgram.setInt("texture2", 1);
+
+  glm::mat4 model = glm::mat4(1.0f);
+  glm::mat4 view = glm::mat4(1.0f);
+  glm::mat4 projection = glm::mat4(1.0f);
+
+  model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+  view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+  projection = glm::perspective(glm::radians(45.0f), (float)SCREEN_WIDTH/(float)SCREEN_HEIGHT, 0.1f, 100.f);
+
+  shaderProgram.setMat4("model", model);
+  shaderProgram.setMat4("view", view);
+  shaderProgram.setMat4("projection", projection);
 
   while (!glfwWindowShouldClose(window)) {
     processInput(window);
@@ -138,7 +150,7 @@ int main() {
 
     shaderProgram.use();
 
-    glUniform1f(glGetUniformLocation(shaderProgram.ID, "mixValue"), mixValue);
+    shaderProgram.setFloat("mixValue", mixValue);
 
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture1);
@@ -146,24 +158,7 @@ int main() {
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, texture2);
 
-
-    glm::mat4 trans = glm::mat4(1.0f);
-    trans = glm::translate(trans, glm::vec3(0.5, -0.5, 0.0));
-    trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0, 0.00, 1.0));
-
-    glUniformMatrix4fv(glGetUniformLocation(shaderProgram.ID, "transform"), 1,
-                       GL_FALSE, glm::value_ptr(trans));
-
     glBindVertexArray(VAO);
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-    trans = glm::mat4(1.0f);
-    trans = glm::translate(trans, glm::vec3(-0.5f, 0.5f, 0.0f));
-    float scale = static_cast<float>(sin(glfwGetTime()));
-    trans = glm::scale(trans, glm::vec3(scale, scale, scale));
-    glUniformMatrix4fv(glGetUniformLocation(shaderProgram.ID, "transform"), 1,
-                       GL_FALSE, &trans[0][0]);
-
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
     glfwSwapBuffers(window);
