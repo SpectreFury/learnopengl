@@ -3,6 +3,8 @@ add_executable(Camera
   src/glad.c 
   src/Shader.hpp
   src/Shader.cpp
+  src/Camera.hpp
+  src/Camera.cpp
   src/stb_image.h
   src/stb_image.cpp
 )

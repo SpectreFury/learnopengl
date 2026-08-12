@@ -1,4 +1,4 @@
-#include "Shader.h"
+#include "Shader.hpp"
 #include "stb_image.h"
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
