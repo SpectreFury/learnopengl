@@ -50,7 +50,8 @@ int main() {
 
     shaderProgram.use();
 
-    mat4 model = create_identity_matrix();
+    vec3 translation = {0.5f, 0.0f, 0.0f};
+    mat4 model = create_translation_matrix(translation);
     shaderProgram.setMat4("model", model);
 
     triangle.draw();

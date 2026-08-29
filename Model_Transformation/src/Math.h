@@ -10,4 +10,5 @@ struct mat4 {
   float entries[16];
 };
 
-mat4 create_identity_matrix(); 
+mat4 create_scale_matrix(vec3 scale); 
+mat4 create_translation_matrix(vec3 translation); 
