@@ -5,6 +5,8 @@ add_executable(Model_Transformation
   src/Shader.cpp
   src/Triangle.hpp
   src/Triangle.cpp
+  src/Square.hpp
+  src/Square.cpp
   src/Math.h
   src/Math.cpp
 

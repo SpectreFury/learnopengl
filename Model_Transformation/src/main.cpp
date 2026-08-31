@@ -1,5 +1,6 @@
 #include "Shader.hpp"
 #include "Triangle.hpp"
+#include "Square.hpp"
 #include "Math.h"
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
@@ -39,7 +40,8 @@ int main() {
   Shader shaderProgram("E:/Programming/learnopengl/Model_Transformation/src/Shader.vert",
                     "E:/Programming/learnopengl/Model_Transformation/src/Shader.frag");
 
-  Triangle triangle;
+  // Triangle triangle;
+  Square square;
 
 
   while (!glfwWindowShouldClose(window)) {
@@ -50,11 +52,19 @@ int main() {
 
     shaderProgram.use();
 
-    vec3 translation = {0.5f, 0.0f, 0.0f};
-    mat4 model = create_translation_matrix(translation);
+    mat4 model = create_identity();
+
+    // vec3 translation = {0.5f, 0.0f, 0.0f};
+    // vec3 scale = {0.5f, 0.5f, 0.5f};
+
+    // model = create_translation_matrix(model, translation);
+    // model = create_scale_matrix(model, scale);
+    model = create_z_rotation_matrix(model, 10 * glfwGetTime());
+
     shaderProgram.setMat4("model", model);
 
-    triangle.draw();
+    // triangle.draw();
+    square.draw();
 
     glfwSwapBuffers(window);
     glfwPollEvents();
