@@ -11,4 +11,6 @@ add_subdirectory(Texture)
 add_subdirectory(Transformation)
 add_subdirectory(Coordinates)
 add_subdirectory(Camera)
+add_subdirectory(Colors)
+
 add_subdirectory(Model_Transformation)
